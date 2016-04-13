@@ -1,0 +1,11 @@
+FROM golang:1.6
+
+RUN go get -u -v github.com/Masterminds/glide
+ADD glide.* /go/src/github.com/airware/kube2logstash/
+WORKDIR /go/src/github.com/airware/kube2logstash
+RUN glide install
+
+ADD . /go/src/github.com/airware/kube2logstash
+WORKDIR /go/src/github.com/airware/kube2logstash
+
+CMD ["make", "docker-build"]

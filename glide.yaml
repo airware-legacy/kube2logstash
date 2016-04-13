@@ -1,0 +1,11 @@
+package: github.com/airware/kube2logstash
+import:
+- package: github.com/Sirupsen/logrus
+- package: github.com/kr/pretty
+- package: k8s.io/kubernetes
+  version: 1.2.0
+  subpackages:
+  - pkg/api
+  - pkg/client/clientset_generated/release_1_2
+  - pkg/fields
+  - pkg/labels
