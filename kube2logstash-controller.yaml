@@ -1,0 +1,23 @@
+kind: "ReplicationController"
+apiVersion: "v1"
+metadata:
+  name: "kube2logstash"
+  labels:
+    app: "kube2logstash"
+spec:
+  replicas: 1
+  selector:
+    app: "kube2logstash"
+  template:
+    metadata:
+      labels:
+        app: "kube2logstash"
+    spec:
+      imagePullSecrets:
+        - name: "quay-cfg"
+      containers:
+        - name: "kube2logstash"
+          image: "quay.io/airware/kube2logstash:latest"
+          resources:
+            limits:
+              cpu: "100m"
